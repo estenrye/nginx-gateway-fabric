@@ -60,6 +60,10 @@ nginxGateway:
     ## APIs installed from the experimental channel.
     enable: false
 
+  ## Additional pod annotations for the NGINX Gateway Fabric pod.
+  # podAnnotations:
+  #   linkerd.io/inject: enabled
+
 nginx:
   ## The NGINX image to use
   image:

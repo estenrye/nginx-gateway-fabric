@@ -15,8 +15,11 @@ spec:
     metadata:
       labels:
       {{- include "nginx-gateway.selectorLabels" . | nindent 8 }}
-      {{- if .Values.metrics.enable }}
       annotations:
+      {{- if .Values.nginxGateway.podAnnotations }}
+        {{ .Values.nginxGateway.podAnnotations | toYaml | nindent 8 }}
+      {{- end }}
+      {{- if .Values.metrics.enable }}
         prometheus.io/scrape: "true"
         prometheus.io/port: "{{ .Values.metrics.port }}"
         {{- if .Values.metrics.secure }}
